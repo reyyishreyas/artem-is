@@ -57,6 +57,13 @@ def convert_to_int(df_field):
     return int(df_field.tolist()[0])
 
 
+def convert_to_optional_int(df_field):
+    value = df_field.tolist()[0]
+    if pd.isna(value) or value == "":
+        return ""
+    return int(value)
+
+
 def snake_case(input: str):
     return input.replace("\n", "").replace(" ", "_").replace(",", "")
 
@@ -85,6 +92,8 @@ def print_item_to_table(item_id: str, this_item: dict, item_info: dict, sep=" ")
         "question": item_info["question"],
         "options": choices,
         "instructions": details,
+        "min_value": item_info["min_value"],
+        "max_value": item_info["max_value"],
     }
 
     print(
@@ -143,6 +152,14 @@ def get_item_info(this_item: dict) -> dict:
 
     mandatory = get_mandatory(this_item)
 
+    min_value = ""
+    if "min_value" in this_item and this_item["min_value"].notna().any():
+        min_value = convert_to_optional_int(this_item["min_value"])
+
+    max_value = ""
+    if "max_value" in this_item and this_item["max_value"].notna().any():
+        max_value = convert_to_optional_int(this_item["max_value"])
+
     return {
         "name": item_name,
         "pref_label": pref_label,
@@ -155,6 +172,8 @@ def get_item_info(this_item: dict) -> dict:
         "visibility": visibility,
         "mandatory": mandatory,
         "sub_section": sub_section,
+        "min_value": min_value,
+        "max_value": max_value,
     }
 
 

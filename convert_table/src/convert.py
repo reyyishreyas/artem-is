@@ -15,7 +15,7 @@ def main():
 
     pattern = "artemis-"
 
-    header = ["item", "field", "question", "options", "instructions"]
+    header = ["item", "field", "question", "options", "instructions", "min_value", "max_value"]
 
     output_file = get_root_dir().joinpath("outputs", "artemis.tsv")
     output_file.parent.mkdir(parents=True, exist_ok=True)

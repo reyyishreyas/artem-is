@@ -21,6 +21,21 @@ The goal of the ARTEM-IS is to use insights derived from systematic reviews and 
 
 You can find output examples on the [OSF page of this project](https://osf.io/ahp3t/).
 
+## Backup of the Google Spreadsheet
+
+The ARTEM-IS Google Spreadsheet is backed up automatically on every run of `make download`
+(or `make convert`, which depends on it).
+
+- Each of the 8 tabs of the spreadsheet is downloaded as a static snapshot under
+  [`inputs/tsv/`](inputs/tsv/) (e.g. `study_id.tsv`, `hardware.tsv`, `acquisition.tsv`).
+- These TSV files are committed to this repository and therefore act as the versioned backup
+  of the spreadsheet content at the time they were generated.
+- The [`inputs/spreadsheet_google_id.tsv`](inputs/spreadsheet_google_id.tsv) file maps each
+  tab to its source Google Sheet, so the snapshots can always be traced back to the original.
+
+The [`outputs/artemis.tsv`](outputs/artemis.tsv) file is the "linear version" table generated
+from these snapshots by [`convert_table/src/convert.py`](convert_table/src/convert.py).
+
 ## Why this project?
 
 It is well known that choices made during recording, preprocessing and analysis of EEG data can affect study outcomes, making it critical to describe EEG methods and the decision-making process thoroughly and transparently. Transparent methods records would allow not only better reproducibility and replicability of EEG research or a better appraisal of the quality of existing studies, but also provide a better basis for novel research, for example by providing meta-scientists with relevant information on published studies. Researchers new to the field of EEG may especially benefit from transparent and thorough reports of EEG studies, as some of them are not beneficiaries of the decades of knowledge contained in unpublished materials like ‘lab handbooks’ which may be passed down in labs with longer traditions.

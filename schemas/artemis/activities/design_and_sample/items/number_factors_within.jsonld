@@ -15,6 +15,7 @@
         "en": "2.10 - How many within-subject factors does this study/pipeline have?<div style='font-size: 70%; text-align:left;'><details> <summary> details </summary> <br>If you do not have any, please put zero in this field.</details></div>"
     },
     "responseOptions": {
-        "valueType": "xsd:integer"
+        "valueType": "xsd:integer",
+        "minValue": 0
     }
 }

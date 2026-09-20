@@ -15,6 +15,7 @@
         "en": "2.12 - How many within-subject conditions did the study have in total?<div style='font-size: 70%; text-align:left;'><details> <summary> details </summary> <br>If your within-subjects data is not divided into separate conditions, please enter 1 to indicate 1 condition. If the design is not full factorial, this number might differ from the total number of between-subject factor level combinations.</details></div>"
     },
     "responseOptions": {
-        "valueType": "xsd:integer"
+        "valueType": "xsd:integer",
+        "minValue": 1
     }
 }
